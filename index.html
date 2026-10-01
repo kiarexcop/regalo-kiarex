@@ -1,0 +1,1617 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>De la Kiarex para ti  💛 Hot Wheels</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  background: #fff3b0;
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* =========================================================
+   PORTADA
+========================================================= */
+
+.portada {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+
+  background:
+    radial-gradient(circle at 10% 20%, #fff 0 3px, transparent 4px),
+    radial-gradient(circle at 85% 15%, #fff 0 3px, transparent 4px),
+    radial-gradient(circle at 70% 80%, #fff 0 2px, transparent 3px),
+    linear-gradient(135deg, #fff9df, #ffe477, #ffc928);
+}
+
+.tarjeta {
+  width: 100%;
+  max-width: 650px;
+  background: #fffdf5;
+  border: 5px solid #ffca28;
+  border-radius: 35px;
+  padding: 40px 25px;
+  text-align: center;
+  box-shadow: 0 15px 35px #a16b2630;
+  animation: entrada 1s ease;
+}
+
+.flores {
+  font-size: 55px;
+  margin-bottom: 15px;
+  animation: flotar 3s ease-in-out infinite;
+}
+
+h1 {
+  color: #e4a900;
+  font-size: clamp(30px, 7vw, 48px);
+  margin-bottom: 20px;
+}
+
+.tarjeta p {
+  color: #624b32;
+  font-size: 19px;
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+
+.boton {
+  background: linear-gradient(#ffdc36, #ffad00);
+  border: 3px solid #292929;
+  border-radius: 50px;
+  padding: 16px 32px;
+  color: #292929;
+  font-weight: bold;
+  font-size: 19px;
+  cursor: pointer;
+  box-shadow: 0 7px 0 #bc7100;
+  transition: .2s;
+}
+
+.boton:hover {
+  transform: translateY(-4px) scale(1.04);
+}
+
+.boton:active {
+  transform: translateY(3px);
+  box-shadow: 0 3px 0 #bc7100;
+}
+
+
+/* =========================================================
+   ESCENA
+========================================================= */
+
+#escena {
+  display: none;
+  position: relative;
+  height: 100vh;
+  min-height: 650px;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      #72c9ff 0%,
+      #c6ecff 48%,
+      #73bd59 48%,
+      #4f9a42 100%
+    );
+}
+
+#escena.visible {
+  display: block;
+  animation: entrada 1s ease;
+}
+
+
+/* =========================================================
+   SOL Y NUBES
+========================================================= */
+
+.sol {
+  position: absolute;
+  top: 35px;
+  left: 8%;
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  background: #ffe34e;
+  box-shadow: 0 0 45px #fff0a0;
+}
+
+.nube {
+  position: absolute;
+  top: 110px;
+  left: 25%;
+  width: 120px;
+  height: 35px;
+  background: white;
+  border-radius: 40px;
+
+  box-shadow:
+    25px -17px 0 -2px white,
+    55px 0 0 -5px white;
+
+  animation: moverNube 18s linear infinite;
+}
+
+.nube.dos {
+  top: 190px;
+  left: 65%;
+  transform: scale(.7);
+}
+
+
+/* =========================================================
+   CARTEL
+========================================================= */
+
+.cartel {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: #e52521;
+  color: #ffdb36;
+
+  border: 4px solid white;
+  border-radius: 14px;
+
+  padding: 10px 24px;
+
+  font-size: clamp(17px, 4vw, 27px);
+  font-weight: 1000;
+  font-style: italic;
+  letter-spacing: 2px;
+
+  box-shadow: 0 5px 0 #9c1717;
+
+  white-space: nowrap;
+  z-index: 50;
+}
+
+
+/* =========================================================
+   PISTA NEGRA
+========================================================= */
+
+.pista {
+  position: absolute;
+
+  width: 140%;
+  height: 210px;
+
+  left: -20%;
+  bottom: 100px;
+
+  background: #252525;
+
+  border-top: 8px solid #111;
+  border-bottom: 8px solid #111;
+
+  border-radius: 50%;
+
+  transform: rotate(-5deg);
+
+  box-shadow:
+    0 15px 0 #151515,
+    0 20px 30px #0005;
+}
+
+/* Línea central */
+.pista::before {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+
+  height: 8px;
+
+  background: repeating-linear-gradient(
+    90deg,
+    #fff 0 45px,
+    transparent 45px 85px
+  );
+
+  transform: translateY(-50%);
+}
+
+/* Líneas laterales */
+.pista::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  top: 18px;
+  bottom: 18px;
+
+  border-top: 4px solid white;
+  border-bottom: 4px solid white;
+
+  border-radius: 50%;
+}
+
+
+/* =========================================================
+   BUCLE
+========================================================= */
+
+.bucle {
+  position: absolute;
+
+  width: 190px;
+  height: 230px;
+
+  left: 27%;
+  bottom: 190px;
+
+  border: 20px solid #252525;
+  border-bottom-color: transparent;
+
+  border-radius: 50% 50% 0 0;
+
+  transform: rotate(8deg);
+
+  filter: drop-shadow(0 7px 0 #111);
+}
+
+.bucle::after {
+  content: "";
+
+  position: absolute;
+
+  left: -10px;
+  right: -10px;
+  top: 45px;
+
+  border-top: 6px dashed white;
+  border-radius: 50%;
+}
+
+
+/* =========================================================
+   CARRITO AZUL + ROJO
+========================================================= */
+
+.coche {
+  position: absolute;
+
+  z-index: 20;
+
+  left: -190px;
+  bottom: 200px;
+
+  width: 160px;
+  height: 78px;
+
+  animation:
+    carrera 7s cubic-bezier(.25,.1,.25,1) forwards;
+
+  animation-play-state: paused;
+}
+
+#escena.visible .coche {
+  animation-play-state: running;
+}
+
+
+/* Carrocería azul */
+.carroceria {
+  position: absolute;
+
+  bottom: 15px;
+  left: 3px;
+
+  width: 155px;
+  height: 38px;
+
+  background: linear-gradient(
+    #42c2ff 0%,
+    #087fe0 38%,
+    #0752b4 70%,
+    #052f73 100%
+  );
+
+  border: 3px solid #05285d;
+
+  border-radius: 22px 40px 12px 12px;
+
+  box-shadow:
+    inset 0 -6px 0 #032c6b,
+    inset 0 4px 0 #72d9ff;
+}
+
+
+/* Techo rojo */
+.techo {
+  position: absolute;
+
+  bottom: 47px;
+  left: 43px;
+
+  width: 72px;
+  height: 29px;
+
+  background: linear-gradient(
+    #ff5c5c,
+    #e31d25
+  );
+
+  border: 3px solid #991219;
+
+  border-radius: 35px 35px 0 0;
+}
+
+
+/* Vidrios */
+.vidrio {
+  position: absolute;
+
+  bottom: 49px;
+  left: 53px;
+
+  width: 25px;
+  height: 20px;
+
+  background: linear-gradient(
+    135deg,
+    #eaffff,
+    #42b9ff
+  );
+
+  border: 2px solid #173c62;
+
+  border-radius: 15px 0 0 0;
+}
+
+.vidrio.dos {
+  left: 82px;
+  border-radius: 0 15px 0 0;
+}
+
+
+/* Alero */
+.alero {
+  position: absolute;
+
+  top: 4px;
+  left: 27px;
+
+  width: 100px;
+  height: 7px;
+
+  background: #e51e25;
+
+  border: 2px solid #961018;
+
+  transform: rotate(-3deg);
+}
+
+
+/* HW */
+.rayo {
+  position: absolute;
+
+  bottom: 28px;
+  left: 18px;
+
+  color: white;
+
+  font-size: 17px;
+  font-weight: 1000;
+  font-style: italic;
+
+  text-shadow: 1px 2px #e31d25;
+}
+
+
+/* Ruedas */
+.rueda {
+  position: absolute;
+
+  bottom: 0;
+
+  width: 35px;
+  height: 35px;
+
+  border: 6px solid #181818;
+
+  background:
+    radial-gradient(
+      circle,
+      #d8d8d8 0 25%,
+      #555 30% 45%,
+      #181818 50%
+    );
+
+  border-radius: 50%;
+
+  animation: girar .35s linear infinite;
+}
+
+.rueda.uno {
+  left: 20px;
+}
+
+.rueda.dos {
+  right: 17px;
+}
+
+
+/* Faro */
+.faro {
+  position: absolute;
+
+  bottom: 27px;
+  right: 0;
+
+  width: 11px;
+  height: 8px;
+
+  background: #fffbd3;
+
+  border-radius: 4px;
+
+  box-shadow: 0 0 12px white;
+}
+
+
+/* =========================================================
+   KIARA
+========================================================= */
+
+.kiara {
+  position: absolute;
+
+  z-index: 25;
+
+  right: 3%;
+  bottom: 5px;
+
+  width: 300px;
+  height: 520px;
+}
+
+
+/* =========================================================
+   CABELLO MUY LARGO
+========================================================= */
+
+.pelo-largo {
+  position: absolute;
+
+  z-index: 1;
+
+  top: 95px;
+  left: 20px;
+
+  width: 235px;
+  height: 410px;
+
+  background: linear-gradient(
+    90deg,
+    #5a2712 0%,
+    #934a20 12%,
+    #d98c43 25%,
+    #f4c16f 38%,
+    #bd6d2d 53%,
+    #743314 68%,
+    #d58b3d 83%,
+    #622a12 100%
+  );
+
+  border: 4px solid #713517;
+
+  border-radius:
+    115px
+    115px
+    65px
+    65px;
+
+  box-shadow:
+    inset 14px 0 0 #e6a14e,
+    inset -15px 0 0 #713313,
+    5px 8px 15px #44230b40;
+}
+
+
+/* Mechones */
+.pelo-largo::before {
+  content: "";
+
+  position: absolute;
+
+  left: 48px;
+  top: 0;
+
+  width: 30px;
+  height: 100%;
+
+  border-left: 4px solid #ffdc9a;
+
+  border-radius: 50%;
+}
+
+.pelo-largo::after {
+  content: "";
+
+  position: absolute;
+
+  left: 112px;
+  top: 0;
+
+  width: 35px;
+  height: 100%;
+
+  border-left: 4px solid #f8cb7c;
+
+  border-radius: 50%;
+}
+
+
+/* Mechones adicionales */
+.mecha {
+  position: absolute;
+
+  z-index: 2;
+
+  width: 25px;
+  height: 350px;
+
+  top: 130px;
+
+  border-left: 3px solid #ffd991;
+
+  border-radius: 50%;
+}
+
+.mecha.uno {
+  left: 63px;
+}
+
+.mecha.dos {
+  left: 140px;
+}
+
+.mecha.tres {
+  left: 190px;
+}
+
+
+/* =========================================================
+   VESTIDO DE PRINCESA
+========================================================= */
+
+.vestido {
+  position: absolute;
+
+  z-index: 5;
+
+  left: 42px;
+  bottom: 0;
+
+  width: 215px;
+  height: 245px;
+}
+
+
+/* Parte superior */
+.cuerpo-vestido {
+  position: absolute;
+
+  z-index: 5;
+
+  left: 73px;
+  top: 0;
+
+  width: 70px;
+  height: 95px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #e7a900,
+      #fff19a 48%,
+      #e4a000
+    );
+
+  border: 3px solid #c98b00;
+
+  border-radius: 28px 28px 15px 15px;
+
+  box-shadow:
+    inset 5px 0 0 #ffe47a,
+    inset -5px 0 0 #d99a00;
+}
+
+
+/* Escote */
+.cuello-vestido {
+  position: absolute;
+
+  z-index: 7;
+
+  left: 88px;
+  top: -8px;
+
+  width: 40px;
+  height: 27px;
+
+  background: #f7c6a0;
+
+  border-radius: 0 0 20px 20px;
+}
+
+
+/* Cintura */
+.cintura {
+  position: absolute;
+
+  z-index: 8;
+
+  left: 64px;
+  top: 77px;
+
+  width: 88px;
+  height: 17px;
+
+  background: #e19b00;
+
+  border: 2px solid #bc7d00;
+
+  border-radius: 15px;
+}
+
+.cintura::after {
+  content: "✦";
+
+  position: absolute;
+
+  left: 35px;
+  top: -3px;
+
+  color: white;
+  font-size: 15px;
+}
+
+
+/* Falda amplia */
+.falda {
+  position: absolute;
+
+  z-index: 4;
+
+  left: 0;
+  bottom: 0;
+
+  width: 215px;
+  height: 175px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #e5a900 0%,
+      #ffd94d 18%,
+      #fff0a0 40%,
+      #ffd84a 62%,
+      #e3a100 100%
+    );
+
+  clip-path: polygon(
+    32% 0,
+    68% 0,
+    100% 100%,
+    0 100%
+  );
+
+  border-radius: 35px 35px 20px 20px;
+
+  filter: drop-shadow(0 5px 3px #9d650044);
+}
+
+
+/* Segunda capa de falda */
+.falda::before {
+  content: "";
+
+  position: absolute;
+
+  left: 15px;
+  bottom: 0;
+
+  width: 185px;
+  height: 55px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #f2b400,
+      #fff19a,
+      #e8aa00
+    );
+
+  clip-path: polygon(
+    12% 0,
+    88% 0,
+    100% 100%,
+    0 100%
+  );
+
+  opacity: .8;
+}
+
+
+/* Flores decorativas del vestido */
+.falda::after {
+  content: "✦  ✿  ✦  ✿  ✦";
+
+  position: absolute;
+
+  left: 25px;
+  bottom: 42px;
+
+  color: white;
+
+  font-size: 17px;
+  letter-spacing: 5px;
+}
+
+
+/* =========================================================
+   CUELLO
+========================================================= */
+
+.cuello {
+  position: absolute;
+
+  z-index: 8;
+
+  top: 137px;
+  left: 137px;
+
+  width: 25px;
+  height: 35px;
+
+  background: #f5c29b;
+
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   CARA
+========================================================= */
+
+.cara {
+  position: absolute;
+
+  z-index: 10;
+
+  top: 48px;
+  left: 90px;
+
+  width: 110px;
+  height: 123px;
+
+  background:
+    linear-gradient(
+      110deg,
+      #f6c6a0,
+      #ffdfc1 55%,
+      #e9a47e
+    );
+
+  border-radius: 47% 47% 48% 48%;
+
+  box-shadow:
+    inset -5px -3px 0 #e9aa86;
+}
+
+
+/* =========================================================
+   FLEQUILLO
+========================================================= */
+
+.flequillo {
+  position: absolute;
+
+  z-index: 12;
+
+  top: 36px;
+  left: 80px;
+
+  width: 125px;
+  height: 68px;
+
+  background:
+    linear-gradient(
+      100deg,
+      #87451f,
+      #f2bd69,
+      #9b5122
+    );
+
+  border-radius: 55% 55% 25% 20%;
+
+  transform: rotate(-5deg);
+}
+
+.flequillo::after {
+  content: "";
+
+  position: absolute;
+
+  width: 52px;
+  height: 52px;
+
+  right: -1px;
+  bottom: -12px;
+
+  background: #e7b36b;
+
+  border-radius: 50%;
+}
+
+
+/* =========================================================
+   OJOS
+========================================================= */
+
+.ojo {
+  position: absolute;
+
+  top: 45px;
+
+  width: 25px;
+  height: 29px;
+
+  background: white;
+
+  border-radius: 50%;
+
+  border: 1px solid #86533a;
+
+  overflow: hidden;
+}
+
+.ojo.izq {
+  left: 19px;
+}
+
+.ojo.der {
+  right: 19px;
+}
+
+.ojo::before {
+  content: "";
+
+  position: absolute;
+
+  left: 5px;
+  top: 5px;
+
+  width: 15px;
+  height: 18px;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      white 0 2px,
+      #80532d 3px,
+      #34241d 70%
+    );
+
+  border-radius: 50%;
+}
+
+
+/* Cejas */
+.ceja {
+  position: absolute;
+
+  top: 35px;
+
+  width: 26px;
+  height: 7px;
+
+  border-top: 3px solid #774125;
+
+  border-radius: 50%;
+}
+
+.ceja.izq {
+  left: 17px;
+}
+
+.ceja.der {
+  right: 17px;
+}
+
+
+/* Nariz */
+.nariz {
+  position: absolute;
+
+  left: 51px;
+  top: 74px;
+
+  width: 8px;
+  height: 10px;
+
+  border-right: 2px solid #d58c6e;
+
+  border-radius: 50%;
+}
+
+
+/* Sonrisa */
+.sonrisa {
+  position: absolute;
+
+  top: 88px;
+  left: 39px;
+
+  width: 32px;
+  height: 15px;
+
+  border-bottom: 3px solid #bd5150;
+
+  border-radius: 50%;
+}
+
+
+/* Mejillas */
+.mejilla {
+  position: absolute;
+
+  top: 79px;
+
+  width: 18px;
+  height: 10px;
+
+  background: #f28e88;
+
+  opacity: .6;
+
+  border-radius: 50%;
+}
+
+.mejilla.izq {
+  left: 8px;
+}
+
+.mejilla.der {
+  right: 8px;
+}
+
+
+/* =========================================================
+   FLOR EN EL CABELLO
+========================================================= */
+
+.flor-pelo {
+  position: absolute;
+
+  z-index: 18;
+
+  top: 69px;
+  right: 22px;
+
+  font-size: 30px;
+
+  filter:
+    drop-shadow(0 2px 2px #9e691b);
+}
+
+
+/* =========================================================
+   MENSAJE SOBRE LA CABEZA
+========================================================= */
+
+.dialogo {
+  position: absolute;
+
+  z-index: 60;
+
+  right: 3%;
+  bottom: 505px;
+
+  width: min(360px, 43vw);
+
+  padding: 18px 20px;
+
+  background: #fffdf6;
+
+  border: 3px solid #ffcc32;
+
+  border-radius: 28px;
+
+  box-shadow: 0 7px 15px #0002;
+
+  color: #644321;
+
+  font-size: clamp(14px, 2.2vw, 18px);
+
+  line-height: 1.45;
+
+  text-align: center;
+
+  animation: flotar 3s ease-in-out infinite;
+}
+
+.dialogo strong {
+  display: block;
+
+  color: #d99400;
+
+  font-size: 21px;
+
+  margin-bottom: 5px;
+}
+
+
+/* Triángulo */
+.dialogo::after {
+  content: "";
+
+  position: absolute;
+
+  right: 48px;
+  bottom: -21px;
+
+  border-left: 13px solid transparent;
+  border-right: 13px solid transparent;
+
+  border-top: 21px solid #ffcc32;
+}
+
+.dialogo::before {
+  content: "";
+
+  position: absolute;
+
+  right: 51px;
+  bottom: -16px;
+
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+
+  border-top: 17px solid #fffdf6;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   FLORES
+========================================================= */
+
+.flor {
+  position: absolute;
+
+  bottom: 20px;
+
+  font-size: 35px;
+
+  animation:
+    flotar 3s ease-in-out infinite;
+
+  z-index: 8;
+}
+
+.f1 {
+  left: 5%;
+}
+
+.f2 {
+  left: 20%;
+  bottom: 50px;
+}
+
+.f3 {
+  left: 43%;
+}
+
+.f4 {
+  left: 60%;
+  bottom: 38px;
+}
+
+
+/* =========================================================
+   BOTÓN VOLVER
+========================================================= */
+
+.volver {
+  position: absolute;
+
+  z-index: 100;
+
+  top: 18px;
+  right: 18px;
+
+  border: 2px solid white;
+
+  border-radius: 30px;
+
+  background: #e83c26;
+
+  color: white;
+
+  padding: 10px 16px;
+
+  cursor: pointer;
+
+  font-weight: bold;
+
+  transition: .2s;
+}
+
+.volver:hover {
+  transform: scale(1.05);
+}
+
+
+/* =========================================================
+   ANIMACIONES
+========================================================= */
+
+@keyframes carrera {
+
+  0% {
+    left: -190px;
+  }
+
+  15% {
+    left: 5%;
+  }
+
+  40% {
+    left: 28%;
+  }
+
+  65% {
+    left: 52%;
+  }
+
+  85% {
+    left: 70%;
+  }
+
+  100% {
+    left: 78%;
+  }
+}
+
+@keyframes girar {
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes flotar {
+
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes entrada {
+
+  from {
+    opacity: 0;
+    transform: scale(.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes moverNube {
+
+  from {
+    margin-left: 0;
+  }
+
+  to {
+    margin-left: 100px;
+  }
+}
+
+
+/* =========================================================
+   CELULARES
+========================================================= */
+
+@media (max-width: 600px) {
+
+  #escena {
+    min-height: 700px;
+  }
+
+  .cartel {
+    top: 18px;
+
+    padding: 8px 14px;
+
+    font-size: 16px;
+  }
+
+  .kiara {
+    right: -55px;
+    bottom: 0;
+
+    transform: scale(.68);
+
+    transform-origin: bottom right;
+  }
+
+  .dialogo {
+    right: 8px;
+    bottom: 440px;
+
+    width: 58%;
+
+    padding: 11px 13px;
+
+    font-size: 13px;
+  }
+
+  .dialogo strong {
+    font-size: 17px;
+  }
+
+  .pista {
+    bottom: 125px;
+    height: 155px;
+  }
+
+  .bucle {
+    left: 15%;
+    bottom: 225px;
+
+    transform:
+      scale(.68)
+      rotate(8deg);
+  }
+
+  .coche {
+    bottom: 175px;
+
+    transform: scale(.8);
+
+    transform-origin: left center;
+  }
+
+  .tarjeta {
+    padding: 35px 20px;
+  }
+
+  .tarjeta p {
+    font-size: 17px;
+  }
+
+  .flores {
+    font-size: 45px;
+  }
+}
+
+
+/* =========================================================
+   REDUCIR ANIMACIONES SI EL DISPOSITIVO LO PIDE
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =======================================================
+     PORTADA
+======================================================== -->
+
+<section class="portada" id="portada">
+
+  <div class="tarjeta">
+
+    <div class="flores">
+      🌻 💛 🌼
+    </div>
+
+    <h1>
+      Para ti, de la Kiarex
+    </h1>
+
+    <p>
+      Por darme flores amarillas,
+      <br>
+      <strong>tengo esto para ti...</strong> 🌻
+    </p>
+
+    <p>
+      Espero que te guste tanto como a mí me gustaron
+      aquellas flores. 💛
+    </p>
+
+    <button
+      class="boton"
+      onclick="abrirRegalo()"
+    >
+      🏎️ Presiona aquí 💛
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     ESCENA
+======================================================== -->
+
+<section id="escena">
+
+
+  <!-- Cielo -->
+
+  <div class="sol"></div>
+
+  <div class="nube"></div>
+
+  <div class="nube dos"></div>
+
+
+  <!-- Cartel -->
+
+  <div class="cartel">
+    🔥 HOT WHEELS 🔥
+  </div>
+
+
+  <!-- Pista -->
+
+  <div class="bucle"></div>
+
+  <div class="pista"></div>
+
+
+  <!-- =====================================================
+       CARRITO
+  ====================================================== -->
+
+  <div
+    class="coche"
+    id="coche"
+  >
+
+    <div class="alero"></div>
+
+    <div class="techo"></div>
+
+    <div class="vidrio"></div>
+
+    <div class="vidrio dos"></div>
+
+    <div class="carroceria"></div>
+
+    <div class="rayo">
+      HW
+    </div>
+
+    <div class="faro"></div>
+
+    <div class="rueda uno"></div>
+
+    <div class="rueda dos"></div>
+
+  </div>
+
+
+  <!-- =====================================================
+       KIARA
+  ====================================================== -->
+
+  <div class="kiara">
+
+    <!-- Cabello larguísimo -->
+
+    <div class="pelo-largo"></div>
+
+    <div class="mecha uno"></div>
+    <div class="mecha dos"></div>
+    <div class="mecha tres"></div>
+
+
+    <!-- Vestido -->
+
+    <div class="vestido">
+
+      <div class="falda"></div>
+
+      <div class="cuerpo-vestido"></div>
+
+      <div class="cintura"></div>
+
+      <div class="cuello-vestido"></div>
+
+    </div>
+
+
+    <!-- Cuello -->
+
+    <div class="cuello"></div>
+
+
+    <!-- Cara -->
+
+    <div class="cara">
+
+      <div class="ceja izq"></div>
+      <div class="ceja der"></div>
+
+      <div class="ojo izq"></div>
+      <div class="ojo der"></div>
+
+      <div class="nariz"></div>
+
+      <div class="sonrisa"></div>
+
+      <div class="mejilla izq"></div>
+      <div class="mejilla der"></div>
+
+    </div>
+
+
+    <!-- Flequillo -->
+
+    <div class="flequillo"></div>
+
+
+    <!-- Flor -->
+
+    <div class="flor-pelo">
+      🌼
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       MENSAJE
+  ====================================================== -->
+
+  <div class="dialogo">
+
+    <strong>
+      ¡Hola, soy Kiara! 💛
+    </strong>
+
+    Gracias por las flores amarillas. 🌻
+    <br>
+
+    ¡Aquí tienes tu carrito! 🏎️💨
+
+  </div>
+
+
+  <!-- Flores del escenario -->
+
+  <div class="flor f1">
+    🌼
+  </div>
+
+  <div class="flor f2">
+    🌻
+  </div>
+
+  <div class="flor f3">
+    🌼
+  </div>
+
+  <div class="flor f4">
+    🌻
+  </div>
+
+
+  <!-- Volver -->
+
+  <button
+    class="volver"
+    onclick="volverInicio()"
+  >
+    ↩ Volver
+  </button>
+
+
+</section>
+
+
+<!-- =======================================================
+     JAVASCRIPT
+======================================================== -->
+
+<script>
+
+function abrirRegalo() {
+
+  document
+    .getElementById("portada")
+    .style.display = "none";
+
+  const escena =
+    document.getElementById("escena");
+
+  const coche =
+    document.getElementById("coche");
+
+  escena.classList.add("visible");
+
+  /* Reiniciar carrera */
+
+  coche.style.animation = "none";
+
+  void coche.offsetWidth;
+
+  coche.style.animation =
+    "carrera 7s cubic-bezier(.25,.1,.25,1) forwards";
+}
+
+
+function volverInicio() {
+
+  document
+    .getElementById("escena")
+    .classList.remove("visible");
+
+  document
+    .getElementById("portada")
+    .style.display = "flex";
+}
+
+</script>
+
+</body>
+</html>
+```
